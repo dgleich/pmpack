@@ -25,7 +25,7 @@ function e = error_estimate(type,X,Y)
 %   X = spectral_galerkin(P.A,P.b,P.s,2);
 %   error_estimate('Resid',X)
 % 
-% See also EVALUTE_EXPANSION RESIDUAL_ERROR_ESTIMATE MINIMUM_COEFFICIENT
+% See also EVALUATE_EXPANSION RESIDUAL_ERROR_ESTIMATE MINIMUM_COEFFICIENT
 
 % Copyright 2009-2010 David F. Gleich (dfgleic@sandia.gov) and Paul G. 
 % Constantine (pconsta@sandia.gov)

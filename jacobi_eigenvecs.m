@@ -20,9 +20,11 @@ function Q=jacobi_eigenvecs(s,n)
 % History
 % -------
 % :2010-06-14: Initial release
+% :2011-04-18: Changed scaling to make first component of Q positive.
 
 
 J=jacobi_matrix(s,n);
 [Q,D]=eig(J);
 [D,I]=sort(diag(D)); %#ok<ASGLU>
 Q=Q(:,I);
+Q=Q*diag(sparse(sign(Q(1,:))));

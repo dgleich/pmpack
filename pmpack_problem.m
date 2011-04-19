@@ -31,6 +31,24 @@ function P=pmpack_problem(pname,varargin)
 
 fullpath = mfilename('fullpath');
 filepath = fileparts(fullpath);
-probdir = fullfile(filepath,'demo');
-addpath(probdir);
-P = feval(pname,varargin{:});
+paths={'problems','demo'};
+for pi=1:length(paths)
+    testdir = paths{pi};
+    probdir = fullfile(testdir,testdir);
+    if exist(fullfile(probdir,[pname '.m']),'file')
+        addpath(probdir);
+    elseif exist(fullfile(probdir,[pname '_func.m']),'file')
+        pname = [pname '_func'];
+        addpath(probdir);
+    end
+end
+
+try
+    P = feval(pname,varargin{:});
+catch m
+    if strcmp(pname(end-5:end),'_func')
+        rethrow(m);
+    else
+        P = feval([pname '_func'],varargin{:});
+    end
+end

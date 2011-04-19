@@ -33,6 +33,10 @@ function P = twobytwo_func(epsilon)
 % Copyright, Stanford University, 2008-2010
 % Paul G. Constantine, David F. Gleich
 
+if nargin==0
+    epsilon = 0.1;
+end
+
 d = length(epsilon);
 
 A0 = @(t,e) [1+e t; t 1];
